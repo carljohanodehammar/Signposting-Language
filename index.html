@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signposting Language, Jönköping University</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#961B81;
+    --purple-deep:#6B1260;
+    --purple-tint:#F9F0F7;
+    --ink:#333333;
+    --grey:#888888;
+    --line:#E4E4E4;
+    --bg:#FFFFFF;
+    --soft:#FAFAFA;
+    --advl:#FFF0D6;
+    --subj:#DCEEF9;
+    --obj:#E3F2E3;
+    --hedge:#FFE6F0;
+    --green:#1F8A4A;
+    --green-bg:#E8F5EE;
+    --green-ink:#0F5C2E;
+    --red:#B83232;
+    --red-bg:#FBE9E9;
+    --red-ink:#7A1F1F;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--purple);text-decoration:none;border-bottom:1px solid var(--purple)}
+  a:hover{color:var(--purple-deep);border-bottom-color:var(--purple-deep)}
+  .wrap{max-width:880px;margin:0 auto;padding:0 28px}
+  .eyebrow{font-family:"DM Sans",system-ui,sans-serif;font-size:13px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--grey)}
+  h1,h2,h3{font-family:"Playfair Display",Georgia,serif;color:var(--ink);font-weight:700;line-height:1.15}
+  h1{font-size:clamp(40px,6vw,72px);margin:0 0 24px;letter-spacing:-0.01em}
+  h2{font-size:clamp(26px,3.4vw,36px);margin:0 0 14px}
+  h3{font-size:20px;font-weight:600;margin:0 0 8px;font-family:"DM Sans",system-ui,sans-serif;letter-spacing:0.01em}
+  p{margin:0 0 14px}
+  .lead{font-size:21px;line-height:1.5;color:var(--ink)}
+  .small{font-family:"DM Sans",system-ui,sans-serif;font-size:14px;color:var(--grey)}
+  /* hero */
+  .hero{padding:88px 0 56px;border-bottom:1px solid var(--line)}
+  .hero h1 em{font-style:italic;color:var(--purple);font-weight:500}
+  .hero .sub{font-size:21px;color:var(--ink);max-width:660px;line-height:1.5}
+  .duel{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:48px 0 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .duel > div{padding:28px 24px 28px 0}
+  .duel > div + div{padding:28px 0 28px 24px;border-left:1px solid var(--line)}
+  .duel .label{font-family:"DM Sans",system-ui,sans-serif;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--grey);margin-bottom:8px}
+  .duel .quote{font-family:"Playfair Display",Georgia,serif;font-size:22px;line-height:1.3;font-style:italic}
+  .duel .you{color:var(--purple);font-weight:700;font-style:normal}
+  .duel .them{color:#B8B8B8}
+  /* section */
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:0}
+  .num{font-family:"DM Sans",system-ui,sans-serif;font-size:13px;letter-spacing:0.18em;color:var(--purple);font-weight:500;text-transform:uppercase;margin-bottom:18px}
+  /* cards */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:18px}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--soft);border-left:3px solid var(--purple);padding:18px 20px 16px;border-radius:0 6px 6px 0}
+  .card h3{color:var(--purple-deep);margin-bottom:6px}
+  .card p{margin:0;font-size:16.5px;line-height:1.5}
+  /* steps */
+  ol.steps{counter-reset:step;list-style:none;padding:0;margin:24px 0 0}
+  ol.steps li{counter-increment:step;padding:18px 0 22px;border-top:1px solid var(--line);display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start}
+  ol.steps li:last-child{border-bottom:1px solid var(--line)}
+  ol.steps li::before{content:counter(step,decimal-leading-zero);font-family:"Playfair Display",serif;font-size:34px;color:var(--purple);font-weight:500;font-style:italic;line-height:1;grid-row:1 / span 2}
+  ol.steps h3{margin:0 0 4px;font-size:19px;font-family:"DM Sans",system-ui,sans-serif;font-weight:700;color:var(--ink)}
+  ol.steps p{margin:0;font-size:16.5px}
+  /* generic reveal block */
+  .block{margin-top:22px;background:var(--soft);padding:24px;border-radius:6px;border:1px solid var(--line)}
+  .block + .block{margin-top:18px}
+  .block .sent{font-family:"Source Serif 4",Georgia,serif;font-size:21px;line-height:1.7;margin-bottom:14px}
+  .blabel{font-family:"DM Sans",system-ui,sans-serif;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple);font-weight:500;margin-bottom:8px}
+  button.btn{font-family:"DM Sans",system-ui,sans-serif;font-size:14px;font-weight:500;letter-spacing:0.04em;background:var(--purple);color:#fff;border:0;padding:10px 16px;border-radius:4px;cursor:pointer;transition:background 0.15s}
+  button.btn:hover{background:var(--purple-deep)}
+  button.btn.ghost{background:transparent;color:var(--purple);border:1px solid var(--purple)}
+  button.btn.ghost:hover{background:var(--purple-tint);color:var(--purple-deep)}
+  button.btn[disabled]{opacity:0.4;cursor:not-allowed}
+  button.btn[disabled]:hover{background:var(--purple)}
+  .ctrl{margin-top:6px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .gloss{margin-top:18px;background:#fff;border:1px solid var(--line);padding:16px 18px;border-radius:4px;font-size:16px}
+  .gloss h4{margin:0 0 8px;font-family:"DM Sans",system-ui,sans-serif;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--purple);font-weight:600}
+  .gloss p{margin:0 0 8px;font-size:15.5px;line-height:1.5}
+  .gloss p:last-child{margin:0}
+  .hide{display:none}
+  /* constituent marking */
+  .sent .advl{background:var(--advl);padding:2px 4px;border-radius:3px}
+  .sent .subj{background:var(--subj);padding:2px 4px;border-radius:3px}
+  .sent .vp{background:var(--purple);color:#fff;padding:2px 5px;border-radius:3px;font-weight:600}
+  .sent .obj{background:var(--obj);padding:2px 4px;border-radius:3px}
+  .sent .sub{border-bottom:1px dotted var(--grey)}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;font-family:"DM Sans",system-ui,sans-serif;font-size:13px;color:var(--ink);margin-top:12px}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{display:inline-block;width:14px;height:14px;border-radius:3px;background:#ddd}
+  .legend i.a{background:var(--advl)}
+  .legend i.s{background:var(--subj)}
+  .legend i.v{background:var(--purple)}
+  .legend i.o{background:var(--obj)}
+  /* matrix */
+  .scroller{overflow-x:auto;margin-top:22px;border:1px solid var(--line);border-radius:6px}
+  table.matrix{border-collapse:collapse;width:100%;min-width:640px;font-family:"DM Sans",system-ui,sans-serif;font-size:14.5px;background:#fff}
+  table.matrix th,table.matrix td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  table.matrix thead th{background:var(--purple-tint);color:var(--purple-deep);font-size:12.5px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700}
+  table.matrix tbody th{font-weight:700;color:var(--purple-deep);white-space:nowrap;background:var(--soft)}
+  table.matrix tbody tr:last-child th,table.matrix tbody tr:last-child td{border-bottom:0}
+  table.matrix td em{font-style:italic;color:var(--ink)}
+  /* decoder read-out */
+  .readout{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+  @media(max-width:680px){.readout{grid-template-columns:1fr 1fr}}
+  .readout div{background:#fff;border:1px solid var(--line);border-radius:4px;padding:12px 14px}
+  .readout .k{font-family:"DM Sans",system-ui,sans-serif;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);display:block;margin-bottom:4px}
+  .readout .v{font-family:"DM Sans",system-ui,sans-serif;font-size:16px;font-weight:700;color:var(--purple-deep)}
+  /* multiple choice */
+  .q{margin-top:22px;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:22px 24px}
+  .q + .q{margin-top:18px}
+  .q .sent{font-size:19px;line-height:1.6;margin-bottom:12px}
+  .q .sent .target{color:var(--purple);font-weight:600;border-bottom:2px solid var(--purple);padding-bottom:1px}
+  .q .qtext{font-family:"DM Sans",system-ui,sans-serif;font-size:14px;color:var(--ink);margin-bottom:10px;font-weight:500}
+  .q .opt{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:4px;padding:11px 14px;margin-bottom:8px;font-family:"DM Sans",system-ui,sans-serif;font-size:14.5px;color:var(--ink);cursor:pointer;transition:all 0.15s}
+  .q .opt:hover{border-color:var(--purple);background:var(--purple-tint)}
+  .q .opt.correct{border-color:var(--green);background:var(--green-bg);color:var(--green-ink)}
+  .q .opt.wrong{border-color:var(--red);background:var(--red-bg);color:var(--red-ink)}
+  .q .opt.disabled{cursor:default;opacity:0.55}
+  .q .opt.disabled:hover{border-color:var(--line);background:#fff}
+  .q .fb{margin-top:10px;font-size:14.5px;font-family:"DM Sans",system-ui,sans-serif;color:var(--ink);background:#fff;border-left:3px solid var(--purple);padding:10px 14px;border-radius:0 4px 4px 0}
+  /* writing tasks */
+  .task{margin-top:22px;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:22px 24px}
+  .task + .task{margin-top:18px}
+  .task .source{background:#fff;border-left:3px solid var(--purple);padding:14px 16px;border-radius:0 4px 4px 0;font-size:17.5px;line-height:1.6;margin-bottom:14px}
+  .task .prompt{font-family:"DM Sans",system-ui,sans-serif;font-size:14px;font-weight:500;margin-bottom:10px}
+  .task textarea{width:100%;min-height:96px;font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.5;color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:12px 14px;background:#fff;resize:vertical}
+  .task textarea:focus{outline:2px solid var(--purple);outline-offset:1px;border-color:var(--purple)}
+  .task .counthint{font-family:"DM Sans",system-ui,sans-serif;font-size:12.5px;color:var(--grey);margin-top:8px}
+  .verdict{display:grid;gap:12px;margin-top:16px}
+  .verdict div{border-radius:4px;padding:13px 16px;font-family:"DM Sans",system-ui,sans-serif;font-size:14.5px;line-height:1.5}
+  .verdict .strong{background:var(--green-bg);border-left:3px solid var(--green);color:var(--green-ink)}
+  .verdict .weak{background:var(--red-bg);border-left:3px solid var(--red);color:var(--red-ink)}
+  .verdict .why{background:#fff;border:1px solid var(--line);color:var(--ink)}
+  .verdict b{font-weight:700;display:block;margin-bottom:3px;letter-spacing:0.02em}
+  /* warning card */
+  .warn{margin-top:22px;background:var(--purple-tint);border-left:3px solid var(--purple);padding:18px 22px;border-radius:0 6px 6px 0}
+  .warn h3{color:var(--purple-deep);margin-bottom:6px}
+  .warn p{margin:0 0 10px;font-size:16.5px;line-height:1.55}
+  .warn p:last-child{margin:0}
+  ul.bullets{padding-left:1.1em;margin:14px 0 0}
+  ul.bullets li{margin-bottom:8px;font-size:16.5px;line-height:1.5}
+  /* closing */
+  .closing{padding:60px 0 84px;border-top:3px solid var(--purple)}
+  .closing p{font-size:18px;max-width:660px}
+  .footnote{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);font-family:"DM Sans",system-ui,sans-serif;font-size:12.5px;color:var(--grey);letter-spacing:0.02em}
+  ::selection{background:var(--purple-tint);color:var(--purple-deep)}
+  :focus-visible{outline:2px solid var(--purple);outline-offset:2px;border-radius:2px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+  /* word picker, used to choose the main verb inside a sentence */
+  .q .sent button.w{font-family:"Source Serif 4",Georgia,serif;font-size:inherit;line-height:inherit;color:var(--purple-deep);background:var(--purple-tint);border:1px solid #E8CFE3;border-radius:4px;padding:1px 6px;cursor:pointer;transition:all 0.15s}
+  .q .sent button.w:hover{background:var(--purple);color:#fff;border-color:var(--purple)}
+  .q .sent button.w.correct{background:var(--green-bg);border-color:var(--green);color:var(--green-ink)}
+  .q .sent button.w.wrong{background:var(--red-bg);border-color:var(--red);color:var(--red-ink)}
+  .q .sent button.w.disabled{cursor:default;opacity:0.55}
+  .q .sent button.w.disabled:hover{background:var(--purple-tint);color:var(--purple-deep);border-color:#E8CFE3}
+
+  /* series strip under the hero */
+  .series{font-family:"DM Sans",system-ui,sans-serif;font-size:14px;color:var(--grey);margin-top:28px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+  .series b{color:var(--ink);font-weight:500;letter-spacing:0.12em;text-transform:uppercase;font-size:12px;margin-right:4px}
+  .series .here{color:var(--purple-deep);font-weight:700}
+  .series .sep{color:#C8C8C8}
+
+  /* item banks: header row with score and a new set button */
+  .bank{margin-top:22px}
+  .bankbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
+  .score{font-family:"DM Sans",system-ui,sans-serif;font-size:14px;color:var(--grey)}
+  .score b{color:var(--purple-deep)}
+
+  /* three-way sort */
+  .sortitem .sent{font-size:19px;line-height:1.55;margin-bottom:12px}
+  .choices{display:flex;flex-wrap:wrap;gap:8px}
+  .choices .opt{display:inline-block;width:auto;margin:0}
+
+  /* pair choice */
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:680px){.pair{grid-template-columns:1fr}}
+  .pair .opt{height:100%;margin:0;font-family:"Source Serif 4",Georgia,serif;font-size:16.5px;line-height:1.5}
+
+  /* sentence builder */
+  .builder{margin-top:22px;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:22px 24px}
+  .brow{margin-bottom:16px}
+  .brow .blabel{margin-bottom:6px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:"Source Serif 4",Georgia,serif;font-size:16px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:7px 14px;cursor:pointer;color:var(--ink);transition:all 0.15s}
+  .chip:hover{border-color:var(--purple);background:var(--purple-tint)}
+  .chip.on{background:var(--purple);border-color:var(--purple);color:#fff}
+  .assembled{background:#fff;border-left:3px solid var(--purple);padding:14px 16px;border-radius:0 4px 4px 0;font-size:18px;line-height:1.6;min-height:56px;margin:4px 0 12px;color:var(--ink)}
+  .assembled .gap{color:#B8B8B8;font-style:italic}
+
+  /* short passages and study cards */
+  .passage{background:#fff;border-left:3px solid var(--purple);padding:14px 16px;border-radius:0 4px 4px 0;font-size:17.5px;line-height:1.6;margin-bottom:12px}
+  .study{background:#fff;border:1px solid var(--line);border-radius:6px;padding:18px 20px;margin-bottom:14px}
+  .study h3{margin:0 0 10px;color:var(--purple-deep)}
+  .study dl{display:grid;grid-template-columns:140px 1fr;gap:6px 14px;margin:0;font-size:16px;line-height:1.5}
+  @media(max-width:560px){.study dl{grid-template-columns:1fr}}
+  .study dt{font-family:"DM Sans",system-ui,sans-serif;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);padding-top:3px}
+  .study dd{margin:0}
+
+  /* self-check list */
+  .checks{margin:14px 0 4px;padding:0;list-style:none}
+  .checks li{margin-bottom:8px}
+  .checks label{display:flex;gap:10px;align-items:flex-start;font-family:"DM Sans",system-ui,sans-serif;font-size:14.5px;line-height:1.45;cursor:pointer}
+  .checks input{margin-top:3px;accent-color:var(--purple);width:16px;height:16px;flex:none}
+
+  /* frames */
+  .frames{margin:18px 0 0;padding:0;list-style:none}
+  .frames li{background:#fff;border:1px solid var(--line);border-radius:4px;padding:10px 14px;margin-bottom:8px;font-size:17px}
+  .frames li i{color:var(--purple-deep);font-style:normal;font-weight:600}
+
+  /* demo talk */
+  .talk{font-size:19px;line-height:1.7;background:#fff;border-left:3px solid var(--purple);padding:14px 18px;border-radius:0 4px 4px 0;margin-bottom:14px}
+  .talk mark{background:var(--purple-tint);color:var(--purple-deep);font-weight:600;padding:1px 4px;border-radius:3px}
+
+  /* phrasebank */
+  .pbtools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:22px}
+  .pbtools input[type=search]{font-family:"DM Sans",system-ui,sans-serif;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:4px;min-width:260px;flex:1 1 260px;max-width:360px}
+  .pbtools input[type=search]:focus{outline:2px solid var(--purple);outline-offset:1px;border-color:var(--purple)}
+  .chip.small{font-family:"DM Sans",system-ui,sans-serif;font-size:14px;padding:6px 12px}
+  .pgroup{margin-top:18px;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:16px 18px 10px}
+  .pgroup .phead{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin-bottom:4px}
+  .pgroup h3{margin:0;color:var(--purple-deep)}
+  .pgroup .stage{font-family:"DM Sans",system-ui,sans-serif;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey)}
+  .pgroup .use{font-size:15.5px;color:var(--ink);margin:0 0 8px}
+  .prow{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);padding:8px 0}
+  .prow .ph{font-size:17px;line-height:1.45}
+  .prow button{flex:none;font-family:"DM Sans",system-ui,sans-serif;font-size:13px;font-weight:500;background:#fff;color:var(--purple);border:1px solid var(--purple);border-radius:14px;padding:4px 12px;cursor:pointer}
+  .prow button:hover{background:var(--purple-tint)}
+  .prow button.on{background:var(--purple);color:#fff}
+  .empty{font-family:"DM Sans",system-ui,sans-serif;font-size:14.5px;color:var(--grey);margin-top:18px}
+
+  /* recall cards */
+  .flash{background:#fff;border:1px solid var(--line);border-radius:8px;padding:26px 24px;margin:14px 0;min-height:170px;text-align:center}
+  .flash .fjob{font-family:"Playfair Display",Georgia,serif;font-size:28px;font-weight:700;color:var(--purple-deep);margin-bottom:6px}
+  .flash .fuse{font-size:16.5px;color:var(--grey);margin-bottom:12px}
+  .flash .fans{font-size:18px;line-height:1.6;border-top:1px solid var(--line);padding-top:12px;text-align:left;display:inline-block}
+  .flash .fans div{margin-bottom:4px}
+  .flash .fans div::before{content:"\203A";color:var(--purple);font-weight:700;margin-right:8px}
+
+  /* cloze */
+  .cz{background:#fff;border:1px solid var(--line);border-radius:4px;padding:12px 14px;margin-top:10px}
+  .cz .czjob{font-family:"DM Sans",system-ui,sans-serif;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);margin-bottom:6px}
+  .cz .czline{font-size:18px;line-height:1.8;display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+  .cz input{font-family:"Source Serif 4",Georgia,serif;font-size:17px;width:9em;padding:3px 8px;border:1px solid var(--line);border-bottom:2px solid var(--purple);border-radius:3px}
+  .cz input.correct{background:var(--green-bg);border-color:var(--green);color:var(--green-ink)}
+  .cz input.wrong{background:var(--red-bg);border-color:var(--red);color:var(--red-ink)}
+  .cz button{font-family:"DM Sans",system-ui,sans-serif;font-size:13px;background:var(--purple);color:#fff;border:0;border-radius:4px;padding:5px 10px;cursor:pointer;margin-left:6px}
+  .cz .czfb{font-family:"DM Sans",system-ui,sans-serif;font-size:14px;margin-top:6px;color:var(--ink)}
+
+  /* notes card */
+  .cardtable{margin-top:18px;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .crow{display:grid;grid-template-columns:170px 1fr;gap:0;border-top:1px solid var(--line);background:#fff}
+  .crow:first-child{border-top:0}
+  .crow .cstep{background:var(--purple-tint);padding:12px 14px;font-family:"DM Sans",system-ui,sans-serif;font-size:14px;font-weight:700;color:var(--purple-deep)}
+  .crow .cstep span{display:block;font-weight:400;color:var(--grey);font-size:12.5px;margin-top:3px}
+  .crow .cbody{padding:10px 14px;display:grid;gap:8px}
+  .crow select,.crow input{font-family:"Source Serif 4",Georgia,serif;font-size:16px;padding:6px 8px;border:1px solid var(--line);border-radius:4px;width:100%;background:#fff;color:var(--ink)}
+  .crow select:focus,.crow input:focus{outline:2px solid var(--purple);outline-offset:1px}
+  @media(max-width:600px){.crow{grid-template-columns:1fr}}
+
+  /* print */
+  #print-area{display:none}
+  @media print{
+    body > *:not(#print-area){display:none !important}
+    #print-area{display:block !important;font-family:"Source Serif 4",Georgia,serif;color:#000}
+    #print-area h1{font-family:"Playfair Display",Georgia,serif;font-size:22pt;color:#961B81;margin:0 0 4pt}
+    #print-area .psub{font-family:"DM Sans",Arial,sans-serif;font-size:9pt;color:#555;margin-bottom:12pt}
+    #print-area table{border-collapse:collapse;width:100%;font-size:11pt}
+    #print-area th,#print-area td{border:1px solid #999;padding:6pt 8pt;text-align:left;vertical-align:top}
+    #print-area th{background:#F9F0F7;color:#6B1260;font-family:"DM Sans",Arial,sans-serif;width:28%}
+    #print-area .pg{break-inside:avoid;margin-bottom:10pt}
+    #print-area .pg h2{font-family:"DM Sans",Arial,sans-serif;font-size:11.5pt;color:#6B1260;margin:0 0 2pt}
+    #print-area .pg p{margin:0 0 3pt;font-size:10pt;color:#444}
+    #print-area .pg ul{margin:0;padding-left:14pt;font-size:10.5pt}
+    #print-area .cols{columns:2;column-gap:18pt}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Speaking / Phrasebank and practice</div>
+    <h1>Show your listeners <em>where</em> you are.</h1>
+    <p class="sub">A reader sees headings, paragraphs and the length of the page. A listener sees none of this. Signposts are the short phrases that do the work of headings in speech: they say where you are, where you are going and when you have arrived. Use this page to learn them, practise them, memorise them and build your own notes card.</p>
+    <div class="duel">
+      <div>
+        <div class="label">With signposts</div>
+        <div class="quote you">My second point is about time. The study found that ... So, to sum up ...</div>
+      </div>
+      <div>
+        <div class="label">Without signposts</div>
+        <div class="quote them">And there is also time. They found that ... And yes, that is it.</div>
+      </div>
+    </div>
+    <div class="series">
+      <b>Speaking</b>
+      <a href="https://carljohanodehammar.github.io/Presenting-a-Text/">Presenting a Text: explain it for someone who has not read it</a>
+      <span class="sep">/</span>
+      <span class="here">Signposting Language: show your listeners where you are</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section>
+  <div class="num">01 / Why signposts</div>
+  <h2>Signposts are headings you can hear.</h2>
+  <p class="lead">When listeners know where they are in a presentation, they can use their attention for the content. When they do not, they spend it on guessing: is this still the first point, is this an example, is this the end? Signposts remove the guessing. They feel repetitive when you write them down. When you say them, they sound clear.</p>
+  <div class="block">
+    <div class="blabel">Listen with your eyes. Read the same short talk twice.</div>
+    <div class="talk" id="talk"></div>
+    <div class="ctrl"><button class="btn" id="talk-toggle" type="button">Show with signposts</button><span class="small" id="talk-note">Now without signposts.</span></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h3>Few and familiar</h3><p>Learn a small set of signposts and use the same ones every time. Listeners do not need variety. They need to recognise the signal.</p></div>
+    <div class="card"><h3>Say them slowly</h3><p>A signpost is followed by a short pause. The pause tells the listener that something new is coming.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="num">02 / The phrasebank</div>
+  <h2>Sixteen jobs a signpost can do.</h2>
+  <p class="lead">This is your reference. The phrases are grouped by the job they do, in the order they usually appear in a presentation. Filter by part of the presentation, or search for a word. Press <b>Add</b> on the phrases you want to use, and they appear on your notes card in section 06.</p>
+  <div class="pbtools">
+    <div class="chips" id="pb-filter"></div>
+    <input type="search" id="pb-search" placeholder="Search, for example: example, however, sum" aria-label="Search the phrasebank">
+  </div>
+  <div class="ctrl" style="margin-top:10px"><span class="small" id="pb-count"></span><button class="btn ghost" type="button" id="pb-print">Print the phrasebank</button></div>
+  <div id="phrasebank"></div>
+</section>
+
+<section>
+  <div class="num">03 / Choose the signpost</div>
+  <h2>The right signpost depends on what comes next.</h2>
+  <p class="lead">A signpost is a promise. <em>For example</em> promises an example. <em>However</em> promises a contrast. <em>To sum up</em> promises the end. If the promise does not match what follows, the listener is misled. Read each short piece of a talk and choose the signpost that fits the gap.</p>
+  <div class="bank" id="bank-gap">
+    <div class="bankbar"><div class="blabel">Choose the signpost that fits the gap.</div></div>
+    <div class="bankbar"><span class="score" data-score></span><button class="btn ghost" data-new>New set</button></div>
+    <div data-items></div>
+  </div>
+</section>
+
+<section>
+  <div class="num">04 / Name the job</div>
+  <h2>Know what each signpost promises.</h2>
+  <p class="lead">When you know the job of a phrase, you can use it with confidence and replace it when you forget it. Five jobs cause most of the confusion in student presentations: moving on, giving an example, contrasting, summing up and checking understanding.</p>
+  <div class="bank" id="bank-job">
+    <div class="bankbar"><div class="blabel">What job does each signpost do?</div></div>
+    <div class="bankbar"><span class="score" data-score></span><button class="btn ghost" data-new>New set</button></div>
+    <div data-items></div>
+  </div>
+</section>
+
+<section>
+  <div class="num">05 / Memorise</div>
+  <h2>Say them until they come without thinking.</h2>
+  <p class="lead">Signposts are most useful when you no longer have to look for them. When you are nervous, your memory gives you the phrases you have said aloud many times, not the ones you have read. Practise in two ways. First, recall: see the job and say a phrase aloud before you look. Second, complete: type the missing word.</p>
+  <div class="block">
+    <div class="blabel">Recall cards. Say a phrase aloud, then turn the card.</div>
+    <div class="chips" id="fc-filter"></div>
+    <div class="flash" id="flash">
+      <div class="fjob" data-job></div>
+      <div class="fuse" data-use></div>
+      <div class="fans hide" data-ans></div>
+    </div>
+    <div class="ctrl">
+      <button class="btn" type="button" id="fc-turn">Turn the card</button>
+      <button class="btn ghost hide" type="button" id="fc-got">I said one</button>
+      <button class="btn ghost hide" type="button" id="fc-again">Show it again later</button>
+      <span class="small" id="fc-status"></span>
+    </div>
+  </div>
+  <div class="block">
+    <div class="blabel">Complete the phrase. Type the missing word.</div>
+    <div class="bankbar"><span class="score" id="cz-score"></span><button class="btn ghost" type="button" id="cz-new">New set</button></div>
+    <div id="cloze"></div>
+  </div>
+</section>
+
+<section>
+  <div class="num">06 / Your notes card</div>
+  <h2>Choose one signpost for each step, and learn those.</h2>
+  <p class="lead">You do not need the whole phrasebank. You need one signpost for each step of your presentation, said often enough that it comes automatically. Choose a signpost for each step below and add a few keywords of your own. Phrases you added in section 02 appear at the top of each list. Then print the card or copy it into your notes.</p>
+  <div class="warn"><h3>Nothing is saved</h3><p>This page stores nothing. Print or copy your card before you close the page.</p></div>
+  <div id="mycard"></div>
+  <div class="ctrl" style="margin-top:14px">
+    <button class="btn" type="button" id="card-print">Print my card</button>
+    <button class="btn ghost" type="button" id="card-copy">Copy as text</button>
+    <button class="btn ghost" type="button" id="card-clear">Clear the card</button>
+    <span class="small" id="card-note"></span>
+  </div>
+</section>
+
+<section>
+  <div class="num">07 / Put it together</div>
+  <h2>Add the signposts to a talk that has none.</h2>
+  <p class="lead">The talk below has good content and no route. Rewrite it with signposts: an opening that shows the plan, a clear move between points, a marked example, a contrast, a summary and an invitation to ask questions. Keep the content the same. Then say your version aloud once.</p>
+  <div class="task" id="practice">
+    <div data-study></div>
+    <div class="ctrl" style="margin:-4px 0 14px"><button class="btn ghost" data-new>New talk</button></div>
+    <div class="prompt">Rewrite the talk with signposts.</div>
+    <textarea aria-label="Your version with signposts"></textarea>
+    <div class="counthint"></div>
+    <div class="hide" data-checkwrap>
+      <ul class="checks">
+        <li><label><input type="checkbox"> My opening tells the listener what the talk is about and how many parts it has.</label></li>
+        <li><label><input type="checkbox"> Each new point starts with a signpost that says it is a new point.</label></li>
+        <li><label><input type="checkbox"> The example is marked as an example.</label></li>
+        <li><label><input type="checkbox"> The contrast is marked, so the listener hears that the second result is different.</label></li>
+        <li><label><input type="checkbox"> The end is marked, and the main point is repeated.</label></li>
+        <li><label><input type="checkbox"> I used the same few signposts, not a new one every time.</label></li>
+      </ul>
+      <div class="ctrl"><button class="btn" data-reveal>Compare with a model</button></div>
+    </div>
+    <div class="verdict hide" data-verdict></div>
+  </div>
+</section>
+
+</div>
+
+<div class="wrap">
+  <div class="closing">
+    <div class="num">Where this leads</div>
+    <h2>From a route to a conversation.</h2>
+    <p>Signposts carry the structure you planned. The planning itself, a clear message, a visible purpose, enough context and a presentation adapted to the listeners, is the subject of <a href="https://carljohanodehammar.github.io/Presenting-a-Text/">Presenting a Text</a>. The two pages are meant to be used together: plan there, then choose your signposts here.</p>
+    <p>The same phrases do more than guide a presentation. When the talk turns into a discussion, the phrases for adding, contrasting, giving an example and checking understanding are how you join in and build on what others say. In writing, many of them return as the linking words of a paragraph, where <a href="https://carljohanodehammar.github.io/Grammar-for-Writing/">Grammar for Writing</a> shows how they are punctuated.</p>
+    <p>Until then, one habit. Choose your signposts before you choose your other words, and say them aloud until they come without thinking.</p>
+    <div class="footnote">All studies and figures in the examples are invented for practice. Carl Johan Odehammar, Jönköping University</div>
+  </div>
+</div>
+
+<div id="print-area"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------- helpers ----------
+  function shuffle(a){
+    a = a.slice();
+    for (var i = a.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function el(tag, cls, text){
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+
+  // Draw a set with the categories as evenly spread as the pool allows, then mix the order.
+  function balanced(pool, n, keyOf){
+    var groups = {};
+    shuffle(pool).forEach(function(it){ var k = keyOf(it); (groups[k] = groups[k] || []).push(it); });
+    var keys = shuffle(Object.keys(groups)), out = [];
+    while (out.length < n && keys.some(function(k){ return groups[k].length; })){
+      keys.forEach(function(k){ if (out.length < n && groups[k].length) out.push(groups[k].shift()); });
+    }
+    return shuffle(out);
+  }
+
+  // ---------- generic bank of one-answer questions ----------
+  // Each item becomes { lead: optional passage, text: sentence or prompt, opts: [{t, ok, why}], row: bool }
+  function makeBank(rootId, pool, perSet, toQuestion, keyOf){
+    var root = document.getElementById(rootId);
+    if (!root) return;
+    var list = root.querySelector("[data-items]");
+    var scoreEl = root.querySelector("[data-score]");
+    var answered = 0, correct = 0, total = 0;
+
+    function updateScore(){
+      scoreEl.innerHTML = answered === 0
+        ? "Set of " + total + ". A new set draws different items."
+        : "<b>" + correct + "</b> of " + answered + " right so far, " + (total - answered) + " left in this set.";
+    }
+
+    function render(){
+      list.innerHTML = "";
+      answered = 0; correct = 0;
+      var chosen = keyOf ? balanced(pool, perSet, keyOf) : shuffle(pool).slice(0, perSet);
+      total = chosen.length;
+      chosen.forEach(function(item){
+        var q = toQuestion(item);
+        var box = el("div", "q" + (q.cls ? " " + q.cls : ""));
+        if (q.lead){ var p = el("div", "passage"); p.textContent = q.lead; box.appendChild(p); }
+        if (q.text){ var s = el("p", "sent"); s.textContent = q.text; box.appendChild(s); }
+        if (q.prompt){ box.appendChild(el("div", "qtext", q.prompt)); }
+        var wrap = el("div", q.wrap || "");
+        var opts = q.keepOrder ? q.opts : shuffle(q.opts);
+        var buttons = [];
+        opts.forEach(function(o){
+          var b = el("button", "opt", o.t);
+          b.type = "button";
+          b.addEventListener("click", function(){
+            if (box.querySelector(".fb")) return;
+            buttons.forEach(function(x){ x.disabled = true; if (x !== b) x.classList.add("disabled"); });
+            b.classList.add(o.ok ? "correct" : "wrong");
+            if (!o.ok){
+              buttons.forEach(function(x, i){ if (opts[i].ok){ x.classList.remove("disabled"); x.classList.add("correct"); } });
+            }
+            var fb = el("div", "fb", o.why);
+            box.appendChild(fb);
+            answered++; if (o.ok) correct++;
+            updateScore();
+          });
+          buttons.push(b);
+          wrap.appendChild(b);
+        });
+        box.appendChild(wrap);
+        list.appendChild(box);
+      });
+      updateScore();
+    }
+    root.querySelector("[data-new]").addEventListener("click", render);
+    render();
+  }
+
+    // ---------- the phrasebank ----------
+  var STAGES = ["Opening", "Middle", "Ending", "Questions"];
+  var PB = [
+    { id: "start", name: "Opening", stage: "Opening", use: "Start, and say what the talk is about.",
+      p: ["Today I am going to talk about ...", "My presentation is about ...", "I would like to start with a question: ...", "Let me begin with a short story."] },
+    { id: "outline", name: "Showing the plan", stage: "Opening", use: "Tell listeners how many parts there are and in what order.",
+      p: ["I will talk about three things. First ..., then ..., and finally ...", "My presentation has three parts.", "I will start with ..., and then move on to ...", "At the end, there will be time for questions."] },
+    { id: "context", name: "Giving background", stage: "Opening", use: "Give the context listeners need before the main point.",
+      p: ["To give you some background, ...", "First, a little context.", "The article was written at a time when ...", "Before I start, let me explain one term: ..."] },
+    { id: "main", name: "Stating the main point", stage: "Middle", use: "Mark the sentence you most want listeners to remember.",
+      p: ["The main argument is that ...", "The key point here is ...", "If you remember one thing, remember this: ...", "In short, the author claims that ..."] },
+    { id: "purpose", name: "Naming the purpose", stage: "Middle", use: "Make the author's purpose and your own purpose visible.",
+      p: ["The author's aim is to ...", "The article tries to show that ...", "The author wants to warn us that ...", "My aim today is to explain ... so that we can ..."] },
+    { id: "next", name: "Moving on", stage: "Middle", use: "Close one point and open the next.",
+      p: ["Now let us look at ...", "My second point is ...", "That brings me to ...", "Moving on to ...", "Next, I want to talk about ..."] },
+    { id: "add", name: "Adding a point", stage: "Middle", use: "Add something in the same direction.",
+      p: ["In addition, ...", "Another important point is ...", "The author also argues that ...", "What is more, ..."] },
+    { id: "example", name: "Giving an example", stage: "Middle", use: "Make an idea concrete.",
+      p: ["For example, ...", "One example of this is ...", "To give you an example, ...", "Imagine that ..."] },
+    { id: "contrast", name: "Contrasting", stage: "Middle", use: "Show that the next idea goes in a different direction.",
+      p: ["However, ...", "On the other hand, ...", "In contrast, ...", "But the second study found ..."] },
+    { id: "cause", name: "Cause and result", stage: "Middle", use: "Show that one thing leads to another.",
+      p: ["This is because ...", "As a result, ...", "This means that ...", "This is why ..."] },
+    { id: "evidence", name: "Reporting evidence", stage: "Middle", use: "Show where a claim comes from.",
+      p: ["The author supports this with ...", "According to the study, ...", "The results show that ...", "The researchers found that ..."] },
+    { id: "view", name: "Giving your view", stage: "Middle", use: "Mark clearly where the author stops and you begin.",
+      p: ["In my view, ...", "I think this is convincing because ...", "One weakness, in my opinion, is ...", "I am less sure about ..."] },
+    { id: "repeat", name: "Repeating and linking back", stage: "Middle", use: "Say something again, or connect it to an earlier point.",
+      p: ["As I said earlier, ...", "Let me say that again, because it is important: ...", "This links back to my first point.", "In other words, ..."] },
+    { id: "check", name: "Checking understanding", stage: "Questions", use: "Find out whether listeners are with you.",
+      p: ["Which of these two results surprised you more?", "Does that example make sense for your own studies?", "Before I go on, shall I explain the method again?", "What do you think the author would say about ...?"] },
+    { id: "sum", name: "Summing up", stage: "Ending", use: "Signal the end and repeat the main points.",
+      p: ["To sum up, ...", "So, the three main points are ...", "The most important point is ...", "To conclude, ..."] },
+    { id: "questions", name: "Inviting and answering questions", stage: "Questions", use: "Open the discussion and handle what people ask.",
+      p: ["I am happy to take your questions.", "Do you mean ...?", "That is a good question. The article says ...", "The article does not answer that, but I think ...", "Let me explain that another way."] }
+  ];
+  var added = {};   // phrase text -> group id, for this visit only
+  var PBrender = null;
+
+  (function(){
+    var root = document.getElementById("phrasebank");
+    var filterBox = document.getElementById("pb-filter");
+    var search = document.getElementById("pb-search");
+    var count = document.getElementById("pb-count");
+    var stage = "All";
+    ["All"].concat(STAGES).forEach(function(s){
+      var b = el("button", "chip small" + (s === "All" ? " on" : ""), s === "All" ? "All parts" : s);
+      b.type = "button";
+      b.addEventListener("click", function(){
+        stage = s;
+        filterBox.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("on"); });
+        b.classList.add("on");
+        render();
+      });
+      filterBox.appendChild(b);
+    });
+    search.addEventListener("input", render);
+
+    function render(){
+      root.innerHTML = "";
+      var q = search.value.trim().toLowerCase();
+      var shown = 0;
+      PB.forEach(function(g){
+        if (stage !== "All" && g.stage !== stage) return;
+        var hitsGroup = !q || g.name.toLowerCase().indexOf(q) >= 0 || g.use.toLowerCase().indexOf(q) >= 0;
+        var phrases = g.p.filter(function(p){ return hitsGroup || p.toLowerCase().indexOf(q) >= 0; });
+        if (!phrases.length) return;
+        var box = el("div", "pgroup");
+        var head = el("div", "phead");
+        head.appendChild(el("h3", "", g.name));
+        head.appendChild(el("span", "stage", g.stage));
+        box.appendChild(head);
+        box.appendChild(el("p", "use", g.use));
+        phrases.forEach(function(p){
+          var row = el("div", "prow");
+          row.appendChild(el("span", "ph", p));
+          var b = el("button", added[p] ? "on" : "", added[p] ? "Added" : "Add");
+          b.type = "button";
+          b.setAttribute("aria-label", (added[p] ? "Remove from" : "Add to") + " my card: " + p);
+          b.addEventListener("click", function(){
+            if (added[p]) delete added[p]; else added[p] = g.id;
+            b.classList.toggle("on", !!added[p]);
+            b.textContent = added[p] ? "Added" : "Add";
+            b.setAttribute("aria-label", (added[p] ? "Remove from" : "Add to") + " my card: " + p);
+            buildCard();
+          });
+          row.appendChild(b);
+          box.appendChild(row);
+          shown++;
+        });
+        root.appendChild(box);
+      });
+      if (!shown) root.appendChild(el("p", "empty", "No phrase matches. Try a shorter word, or choose All parts."));
+      var n = Object.keys(added).length;
+      count.textContent = shown + " phrases shown. " + (n ? n + " added to your card." : "None added yet.");
+    }
+    PBrender = render;
+    render();
+
+    document.getElementById("pb-print").addEventListener("click", function(){
+      var pa = document.getElementById("print-area");
+      pa.innerHTML = "";
+      pa.appendChild(el("h1", "", "Signposting phrasebank"));
+      pa.appendChild(el("div", "psub", "Phrases grouped by the job they do, in the usual order of a presentation."));
+      var cols = el("div", "cols");
+      PB.forEach(function(g){
+        var d = el("div", "pg");
+        d.appendChild(el("h2", "", g.name));
+        d.appendChild(el("p", "", g.use));
+        var ul = el("ul");
+        g.p.forEach(function(p){ ul.appendChild(el("li", "", p)); });
+        d.appendChild(ul);
+        cols.appendChild(d);
+      });
+      pa.appendChild(cols);
+      window.print();
+    });
+  })();
+
+  // ---------- 01: the demo talk ----------
+  (function(){
+    var WITH = [
+      ["Today I am going to talk about ", 1], ["a study on sleep and marks. ", 0],
+      ["I will cover three things: what the researchers did, what they found, and what I think of it. ", 1],
+      ["First, the method. ", 1], ["The researchers asked 300 students to record their sleep for one term. ", 0],
+      ["Now, the results. ", 1], ["Students who slept more got slightly better marks. ", 0],
+      ["For example, ", 1], ["a student who slept eight hours scored about four per cent higher than one who slept six. ", 0],
+      ["However, ", 1], ["the effect was small. ", 0],
+      ["Finally, my view. One weakness is that ", 1], ["the students reported their own sleep, and people often remember it wrongly. ", 0],
+      ["To sum up, ", 1], ["sleep is part of studying, but this study shows only a small effect. ", 0],
+      ["I am happy to take your questions.", 1]
+    ];
+    var WITHOUT = "A study on sleep and marks. The researchers asked 300 students to record their sleep for one term. Students who slept more got slightly better marks. A student who slept eight hours scored about four per cent higher than one who slept six. The effect was small. The students reported their own sleep, and people often remember it wrongly. Sleep is part of studying, but this study shows only a small effect.";
+    var box = document.getElementById("talk");
+    var btn = document.getElementById("talk-toggle");
+    var note = document.getElementById("talk-note");
+    var on = false;
+    function render(){
+      box.innerHTML = "";
+      if (!on){ box.textContent = WITHOUT; btn.textContent = "Show with signposts"; note.textContent = "Without signposts. Where does the method end? Which sentence is the speaker's own view?"; return; }
+      WITH.forEach(function(s){ box.appendChild(s[1] ? el("mark", "", s[0]) : document.createTextNode(s[0])); });
+      btn.textContent = "Show without signposts";
+      note.textContent = "With signposts. The content is the same. Only the route has been added.";
+    }
+    btn.addEventListener("click", function(){ on = !on; render(); });
+    render();
+  })();
+
+  // ---------- 03: choose the signpost ----------
+  var GAPS = [
+    { lead: "The first study found a large effect. ____ the second study found no effect at all.",
+      opts: [["However,", "contrasting"], ["For example,", "giving an example"], ["As a result,", "showing a result"], ["To sum up,", "summing up"]],
+      why: "The second sentence goes in the opposite direction, so the listener needs a contrast signal." },
+    { lead: "Many students study late at night. ____ in this study, a third of the students went to bed after two in the morning.",
+      opts: [["For example,", "giving an example"], ["However,", "contrasting"], ["To conclude,", "summing up"], ["My second point is that", "moving on"]],
+      why: "The second sentence gives a concrete case of the first, so it is an example." },
+    { lead: "That was the method. ____ the results.",
+      opts: [["Now let us look at", "moving on"], ["For example,", "giving an example"], ["However,", "contrasting"], ["This is because", "giving a cause"]],
+      why: "One part is closed and the next is opened. That is the job of a moving-on signpost." },
+    { lead: "Many students slept badly during the exam period. ____ their marks were lower in that period.",
+      opts: [["As a result,", "showing a result"], ["For example,", "giving an example"], ["On the other hand,", "contrasting"], ["Before I start,", "giving background"]],
+      why: "Bad sleep leads to lower marks in the talk, so the link is cause and result." },
+    { lead: "____, the study found that sleep and marks are linked, that the link is small, and that the method has one weakness.",
+      opts: [["To sum up", "summing up"], ["For example", "giving an example"], ["However", "contrasting"], ["Next", "moving on"]],
+      why: "The sentence repeats the main points of the whole talk, which is what a summary does." },
+    { lead: "Before I go on, ____ which of the two results surprised you more?",
+      opts: [["let me ask you:", "checking understanding"], ["for example,", "giving an example"], ["to sum up,", "summing up"], ["however,", "contrasting"]],
+      why: "A question to the listeners in the middle of a talk checks whether they are following." },
+    { lead: "____ let me explain one term. A longitudinal study is one that follows the same people over time.",
+      opts: [["Before I start,", "giving background"], ["To sum up,", "summing up"], ["As a result,", "showing a result"], ["However,", "contrasting"]],
+      why: "The speaker prepares the listeners with a term they will need later. That is background." },
+    { lead: "Today I will talk about three things. ____ what the study did, then what it found, and finally what I think of it.",
+      opts: [["First,", "showing the plan"], ["However,", "contrasting"], ["In other words,", "repeating"], ["As a result,", "showing a result"]],
+      why: "First, then and finally together show the plan of the talk." },
+    { lead: "The key point is that the method mattered more than the time. ____ it was not how long they studied, but how.",
+      opts: [["In other words,", "repeating in a new way"], ["For example,", "giving an example"], ["However,", "contrasting"], ["Next,", "moving on"]],
+      why: "The second sentence says the same point again in simpler words." },
+    { lead: "Those were the results. ____ my view. I think the study has one important weakness.",
+      opts: [["Finally,", "moving to the last part"], ["For example,", "giving an example"], ["As a result,", "showing a result"], ["In other words,", "repeating"]],
+      why: "The speaker moves to the last part of the plan, so the listener needs to hear that this is the final part." },
+    { lead: "The author claims that apps help with vocabulary. ____ test results from two groups of learners.",
+      opts: [["She supports this with", "reporting evidence"], ["However,", "contrasting"], ["To sum up,", "summing up"], ["Moving on to", "moving on"]],
+      why: "A claim is followed by the evidence behind it, and the signpost names that link." },
+    { lead: "____ this study is convincing, because the two groups were chosen at random.",
+      opts: [["In my view,", "giving your own view"], ["According to the study,", "reporting the author"], ["For example,", "giving an example"], ["To sum up,", "summing up"]],
+      why: "Convincing is a judgement, so the listener needs to hear that it is the speaker's view, not the author's." },
+    { lead: "The sample was small, only 40 people. ____ the author calls the result a first step.",
+      opts: [["This is why", "showing a result"], ["For example,", "giving an example"], ["On the other hand,", "contrasting"], ["Before I start,", "giving background"]],
+      why: "The small sample is the reason for the author's caution, so the link is cause and result." },
+    { lead: "That is all I want to say about the method. ____ to the results.",
+      opts: [["Moving on", "moving on"], ["In contrast", "contrasting"], ["For instance", "giving an example"], ["As a result", "showing a result"]],
+      why: "Moving on to ... closes one part and opens the next. The others do not fit before to the results." },
+    { lead: "Thank you for listening. ____",
+      opts: [["I am happy to take your questions.", "inviting questions"], ["My second point is about time.", "moving on"], ["For example, the first group slept more.", "giving an example"], ["However, the effect was small.", "contrasting"]],
+      why: "After thank you, the talk is over. The next step is to invite questions." },
+    { lead: "Some people think longer study sessions are always better. ____ this study suggests that short breaks help.",
+      opts: [["On the other hand,", "contrasting"], ["For example,", "giving an example"], ["This means that", "showing a result"], ["To begin with,", "starting a list"]],
+      why: "The study goes against what some people think, so a contrast signal is needed." }
+  ];
+  makeBank("bank-gap", GAPS, 6, function(it){
+    return {
+      text: it.lead,
+      opts: it.opts.map(function(o, i){
+        return { t: o[0], ok: i === 0, why: i === 0 ? "Correct. " + it.why : "Not quite. " + o[0] + " is used for " + o[1] + ". " + it.why };
+      })
+    };
+  });
+
+  // ---------- 04: name the job ----------
+  var JOBS = ["Moving on", "Giving an example", "Contrasting", "Summing up", "Checking understanding"];
+  var JOB_NOTE = [
+    "This closes one part and opens the next. ",
+    "This promises a concrete case of what was just said. ",
+    "This promises that the next idea goes in a different direction. ",
+    "This tells listeners that the end is coming and the main points will be repeated. ",
+    "This asks listeners for a sign that they are following. "
+  ];
+  var JOB_ITEMS = [
+    ["Now let us look at the results.", 0, "Now let us look at announces a new part."],
+    ["That brings me to my second point.", 0, "Brings me to marks the step from one point to the next."],
+    ["Next, I want to talk about the method.", 0, "Next marks a new part."],
+    ["Moving on to the author's purpose, ...", 0, "Moving on to names the next part."],
+    ["For instance, one student slept only five hours.", 1, "For instance means the same as for example."],
+    ["To give you an example, ...", 1, "The phrase names its own job."],
+    ["Imagine a student who works twenty hours a week.", 1, "Imagine introduces a concrete case."],
+    ["One example of this is the second school.", 1, "One example of this points back to the idea it illustrates."],
+    ["On the other hand, the second group did better.", 2, "On the other hand introduces the other side."],
+    ["However, the effect was small.", 2, "However limits or goes against what came before."],
+    ["In contrast, the paper group remembered more details.", 2, "In contrast sets two things against each other."],
+    ["But the second study found the opposite.", 2, "But and the opposite both signal contrast."],
+    ["So, the three main points are ...", 3, "The three main points repeats the whole talk."],
+    ["To conclude, ...", 3, "To conclude signals the end."],
+    ["The most important point is this: ...", 3, "It picks out the one thing to remember, which is typical of the end."],
+    ["To sum up, ...", 3, "To sum up is the most common signal of a summary."],
+    ["Which of these results surprised you more?", 4, "A question that needs a real answer shows whether listeners understood."],
+    ["Does that example make sense for your own studies?", 4, "It asks listeners to apply the example."],
+    ["Before I go on, shall I explain the method again?", 4, "It offers to repeat a part if listeners need it."],
+    ["What do you think the author would say about that?", 4, "It asks listeners to use what they have heard."]
+  ];
+  makeBank("bank-job", JOB_ITEMS, 10, function(it){
+    return {
+      cls: "sortitem", text: it[0], wrap: "choices", keepOrder: true,
+      opts: JOBS.map(function(c, i){
+        return { t: c, ok: i === it[1], why: (i === it[1] ? "Correct. " : "Not quite. ") + JOB_NOTE[it[1]] + it[2] };
+      })
+    };
+  }, function(it){ return it[1]; });
+
+  // ---------- 05a: recall cards ----------
+  (function(){
+    var filterBox = document.getElementById("fc-filter");
+    var flash = document.getElementById("flash");
+    var jobEl = flash.querySelector("[data-job]"), useEl = flash.querySelector("[data-use]"), ansEl = flash.querySelector("[data-ans]");
+    var turn = document.getElementById("fc-turn"), got = document.getElementById("fc-got"), again = document.getElementById("fc-again");
+    var status = document.getElementById("fc-status");
+    var stage = "All", queue = [], done = 0, current = null;
+    ["All"].concat(STAGES).forEach(function(s){
+      var b = el("button", "chip small" + (s === "All" ? " on" : ""), s === "All" ? "All parts" : s);
+      b.type = "button";
+      b.addEventListener("click", function(){
+        stage = s;
+        filterBox.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("on"); });
+        b.classList.add("on");
+        start();
+      });
+      filterBox.appendChild(b);
+    });
+    function start(){
+      queue = shuffle(PB.filter(function(g){ return stage === "All" || g.stage === stage; }));
+      done = 0; next();
+    }
+    function next(){
+      ansEl.classList.add("hide"); got.classList.add("hide"); again.classList.add("hide"); turn.classList.remove("hide");
+      if (!queue.length){
+        current = null;
+        jobEl.textContent = "Round complete";
+        useEl.textContent = "You recalled a phrase for every job in this set. Start again, or choose another part.";
+        turn.textContent = "Start again";
+        status.textContent = done + " recalled.";
+        return;
+      }
+      current = queue.shift();
+      jobEl.textContent = current.name;
+      useEl.textContent = current.use + " Say one phrase aloud.";
+      turn.textContent = "Turn the card";
+      status.textContent = done + " recalled, " + (queue.length + 1) + " to go.";
+    }
+    turn.addEventListener("click", function(){
+      if (!current){ start(); return; }
+      ansEl.innerHTML = "";
+      current.p.forEach(function(p){ ansEl.appendChild(el("div", "", p)); });
+      ansEl.classList.remove("hide");
+      turn.classList.add("hide"); got.classList.remove("hide"); again.classList.remove("hide");
+    });
+    got.addEventListener("click", function(){ done++; next(); });
+    again.addEventListener("click", function(){
+      var pos = Math.min(queue.length, 2);
+      queue.splice(pos, 0, current);
+      next();
+    });
+    start();
+  })();
+
+  // ---------- 05b: complete the phrase ----------
+  (function(){
+    var STOP = { that: 1, this: 1, with: 1, from: 1, about: 1, have: 1, your: 1, will: 1, what: 1, would: 1, then: 1, more: 1, there: 1 };
+    var ITEMS = [];
+    PB.forEach(function(g){
+      g.p.forEach(function(p){
+        var words = p.split(" ");
+        var idx = -1;
+        for (var i = 0; i < words.length; i++){
+          var w = words[i].replace(/[^A-Za-z']/g, "");
+          if (w.length >= 4 && !STOP[w.toLowerCase()]){ idx = i; break; }
+        }
+        if (idx < 0) return;
+        ITEMS.push({ job: g.name, words: words, idx: idx, answer: words[idx].replace(/[^A-Za-z']/g, "") });
+      });
+    });
+    var root = document.getElementById("cloze");
+    var scoreEl = document.getElementById("cz-score");
+    var right = 0, tried = 0, total = 0;
+    function score(){
+      scoreEl.innerHTML = tried === 0 ? "Set of " + total + ". Check each line, or press Enter." : "<b>" + right + "</b> of " + tried + " right so far.";
+    }
+    function render(){
+      root.innerHTML = ""; right = 0; tried = 0;
+      var set = shuffle(ITEMS).slice(0, 6); total = set.length;
+      set.forEach(function(it){
+        var box = el("div", "cz");
+        box.appendChild(el("div", "czjob", it.job));
+        var line = el("div", "czline");
+        var before = it.words.slice(0, it.idx).join(" ");
+        var wordFull = it.words[it.idx];
+        var trail = wordFull.slice(it.answer.length + wordFull.indexOf(it.answer));
+        var after = (trail + " " + it.words.slice(it.idx + 1).join(" ")).trim();
+        if (before) line.appendChild(el("span", "", before));
+        var input = el("input");
+        input.type = "text"; input.setAttribute("aria-label", "Missing word"); input.autocomplete = "off"; input.spellcheck = false;
+        line.appendChild(input);
+        if (after) line.appendChild(el("span", "", after));
+        var b = el("button", "", "Check"); b.type = "button";
+        line.appendChild(b);
+        box.appendChild(line);
+        var fb = el("div", "czfb");
+        box.appendChild(fb);
+        var answered = false;
+        function check(){
+          var v = input.value.trim().toLowerCase();
+          if (!v) return;
+          var ok = v === it.answer.toLowerCase();
+          input.classList.remove("correct", "wrong");
+          input.classList.add(ok ? "correct" : "wrong");
+          fb.textContent = ok ? "Correct. Now say the whole phrase aloud once." : "The missing word is " + it.answer + ". Say the whole phrase aloud once, then try again later.";
+          if (!answered){ answered = true; tried++; if (ok) right++; score(); }
+        }
+        b.addEventListener("click", check);
+        input.addEventListener("keydown", function(e){ if (e.key === "Enter") check(); });
+        root.appendChild(box);
+      });
+      score();
+    }
+    document.getElementById("cz-new").addEventListener("click", render);
+    render();
+  })();
+
+  // ---------- 06: my notes card ----------
+  var STEPS = [
+    ["Opening", "Say what the talk is about.", ["start"]],
+    ["The plan", "How many parts, in what order.", ["outline"]],
+    ["Background", "What listeners need first.", ["context"]],
+    ["Main point", "The one sentence to remember.", ["main", "purpose"]],
+    ["Next point", "Move from one part to the next.", ["next", "add"]],
+    ["Evidence and example", "Make the point concrete.", ["evidence", "example", "cause"]],
+    ["Your view", "Where the author stops and you begin.", ["view", "contrast"]],
+    ["Check", "Are they with you?", ["check", "repeat"]],
+    ["Summing up", "Signal the end, repeat the message.", ["sum"]],
+    ["Questions", "Open the discussion.", ["questions"]]
+  ];
+  var cardState = STEPS.map(function(){ return { sig: "", kw: "" }; });
+  function groupById(id){ for (var i = 0; i < PB.length; i++){ if (PB[i].id === id) return PB[i]; } return null; }
+  function buildCard(){
+    var root = document.getElementById("mycard");
+    if (!root) return;
+    root.innerHTML = "";
+    var table = el("div", "cardtable");
+    STEPS.forEach(function(s, i){
+      var row = el("div", "crow");
+      var st = el("div", "cstep", (i + 1) + ". " + s[0]);
+      st.appendChild(el("span", "", s[1]));
+      row.appendChild(st);
+      var body = el("div", "cbody");
+      var sel = el("select"); sel.setAttribute("aria-label", "Signpost for " + s[0]);
+      var o0 = el("option", "", "Choose a signpost"); o0.value = ""; sel.appendChild(o0);
+      var mine = Object.keys(added).filter(function(p){ return s[2].indexOf(added[p]) >= 0; });
+      if (mine.length){
+        var og = el("optgroup"); og.label = "Added from the phrasebank";
+        mine.forEach(function(p){ var o = el("option", "", p); o.value = p; og.appendChild(o); });
+        sel.appendChild(og);
+      }
+      s[2].forEach(function(id){
+        var g = groupById(id);
+        var og = el("optgroup"); og.label = g.name;
+        g.p.forEach(function(p){ if (mine.indexOf(p) >= 0) return; var o = el("option", "", p); o.value = p; og.appendChild(o); });
+        sel.appendChild(og);
+      });
+      sel.value = cardState[i].sig;
+      sel.addEventListener("change", function(){ cardState[i].sig = sel.value; });
+      body.appendChild(sel);
+      var kw = el("input"); kw.type = "text"; kw.placeholder = "My keywords"; kw.setAttribute("aria-label", "Keywords for " + s[0]);
+      kw.value = cardState[i].kw;
+      kw.addEventListener("input", function(){ cardState[i].kw = kw.value; });
+      body.appendChild(kw);
+      row.appendChild(body);
+      table.appendChild(row);
+    });
+    root.appendChild(table);
+    if (PBrender) PBrender();
+  }
+  (function(){
+    buildCard();
+    var note = document.getElementById("card-note");
+    function asText(){
+      return STEPS.map(function(s, i){
+        return (i + 1) + ". " + s[0] + ": " + (cardState[i].sig || "(no signpost)") + (cardState[i].kw ? "  |  " + cardState[i].kw : "");
+      }).join("\n");
+    }
+    document.getElementById("card-print").addEventListener("click", function(){
+      var pa = document.getElementById("print-area");
+      pa.innerHTML = "";
+      pa.appendChild(el("h1", "", "My signpost card"));
+      pa.appendChild(el("div", "psub", "One signpost for each step. Say them aloud until they come without thinking."));
+      var t = el("table");
+      STEPS.forEach(function(s, i){
+        var tr = el("tr");
+        tr.appendChild(el("th", "", (i + 1) + ". " + s[0]));
+        var td = el("td");
+        td.appendChild(el("div", "", cardState[i].sig || " "));
+        if (cardState[i].kw){ var k = el("div", "", cardState[i].kw); k.style.color = "#555"; k.style.marginTop = "3pt"; td.appendChild(k); }
+        tr.appendChild(td);
+        t.appendChild(tr);
+      });
+      pa.appendChild(t);
+      window.print();
+    });
+    document.getElementById("card-copy").addEventListener("click", function(){
+      var text = asText();
+      function fallback(){
+        var ta = el("textarea"); ta.value = text; document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); note.textContent = "Copied."; } catch (e) { note.textContent = "Copy did not work. Select the text and copy it by hand."; }
+        document.body.removeChild(ta);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){ note.textContent = "Copied. Paste it into your notes."; }, fallback);
+      } else fallback();
+    });
+    document.getElementById("card-clear").addEventListener("click", function(){
+      cardState = STEPS.map(function(){ return { sig: "", kw: "" }; });
+      buildCard(); note.textContent = "The card is empty.";
+    });
+  })();
+
+  // ---------- 07: add the signposts ----------
+  var TALKS = [
+    { title: "A talk with no route: breaks while studying (invented study)",
+      text: "The study is about taking breaks while studying. 160 students took part for one term. Half took a five-minute break every 30 minutes. Half did not take breaks. The break group finished their reading sooner. A student in the break group needed about 50 minutes for a chapter. A student without breaks needed about an hour. The break group also made fewer mistakes in a quiz. The students chose their own group. This could affect the result. Short breaks seem to help. That is it.",
+      model: "Today I am going to talk about a study on taking breaks while studying. I will cover three things: what the researchers did, what they found, and one weakness. First, the method. 160 students took part for one term. Half took a five-minute break every 30 minutes, and half did not. Now, the results. The break group finished their reading sooner. For example, a student in the break group needed about 50 minutes for a chapter, while a student without breaks needed about an hour. In addition, the break group made fewer mistakes in a quiz. However, there is one weakness: the students chose their own group, and this could affect the result. To sum up, short breaks seem to help, but we should be careful. I am happy to take your questions.",
+      weak: "Firstly, the study is about breaks. Secondly, 160 students. Thirdly, half took breaks. Furthermore, moreover, the break group finished sooner. Nevertheless, for example, 50 minutes. On the other hand, fewer mistakes. In conclusion, the students chose their own group. That is it.",
+      why: "The model adds a plan at the start, marks each part (first, now, however, to sum up), marks the example and the contrast correctly, and ends by repeating the message and inviting questions. The weak version adds many signposts, but they make false promises: on the other hand introduces a result in the same direction, in conclusion introduces a weakness instead of a summary, and nevertheless has nothing to contrast with. A signpost that promises the wrong thing is worse than none." },
+    { title: "A talk with no route: handwritten and typed notes (invented study)",
+      text: "This is about taking notes by hand or on a laptop. 120 students in one course took part. Half wrote by hand and half typed. There was a test after one week. Laptop users remembered more exact words. Handwriting users explained the ideas better. In one question, handwriting users gave longer explanations in their own words. Only one lecture topic was tested. Each method helps with something different.",
+      model: "My presentation is about taking notes by hand or on a laptop. It has three parts: the method, the two main results, and one limit. To start with, the method. 120 students in one course took part. Half wrote by hand and half typed, and there was a test one week later. Now let us look at the results. Laptop users remembered more exact words. On the other hand, handwriting users explained the ideas better. For example, in one question, handwriting users gave longer explanations in their own words. Finally, one limit: only one lecture topic was tested. So, the most important point is this: each method helps with something different. Which of the two would help you more in an exam?",
+      weak: "Today I am going to talk about notes. For example, 120 students. However, half wrote by hand and half typed. To sum up, there was a test. As a result, laptop users remembered more words. For example, handwriting users explained ideas better. In other words, only one topic was tested. Thank you.",
+      why: "The model gives a plan, marks the two results as a contrast (on the other hand), marks the example after the idea it illustrates, and ends with the main point and a check question. The weak version puts signposts in front of sentences that do not do that job: for example before a number of participants, however before a description of the method, to sum up in the middle, as a result before a finding that does not follow from the test." },
+    { title: "A talk with no route: plants in offices (invented study)",
+      text: "The study is about plants in offices. Four offices took part for six months. Two offices got plants. Two did not. The amount of work did not change. Workers with plants said they felt calmer. They also said they liked their office more. The author argues that wellbeing matters even if output stays the same. Feelings were measured with a short questionnaire. I am not sure the argument is strong enough.",
+      model: "Today I would like to talk about a study on plants in offices. I will tell you what the researchers did, what they found, and what I think of the author's argument. First, the method. Four offices took part for six months. Two got plants, and two did not. Now, the results. The amount of work did not change. However, workers with plants said they felt calmer, and they also liked their office more. The author's aim is to persuade us that wellbeing matters even when output stays the same. In my view, the argument is not yet strong enough, because feelings were measured with a short questionnaire. To sum up, plants did not change how much people did, but they may change how people feel. I am happy to take your questions.",
+      weak: "The study is about plants. And then four offices. And then two got plants. And then the work did not change. And then they felt calmer. And then the author argues about wellbeing. And then the questionnaire. And then I am not sure.",
+      why: "The model separates method, results and the speaker's view, marks the contrast between output and feelings, and makes both the author's purpose and the speaker's own view clearly visible. The weak version joins everything with and then, which tells the listener only that something else is coming, never what kind of thing. The listener cannot hear where the author's argument ends and the speaker's opinion begins." }
+  ];
+  (function(){
+    var root = document.getElementById("practice");
+    if (!root) return;
+    var holder = root.querySelector("[data-study]");
+    var area = root.querySelector("textarea");
+    var hint = root.querySelector(".counthint");
+    var checkwrap = root.querySelector("[data-checkwrap]");
+    var reveal = root.querySelector("[data-reveal]");
+    var verdict = root.querySelector("[data-verdict]");
+    var order = shuffle(TALKS.map(function(_, i){ return i; }));
+    var pos = 0;
+    function show(){
+      var t = TALKS[order[pos % order.length]];
+      holder.innerHTML = "";
+      var card = el("div", "study");
+      card.appendChild(el("h3", "", t.title));
+      card.appendChild(el("p", "", t.text));
+      holder.appendChild(card);
+      area.value = "";
+      checkwrap.classList.add("hide");
+      checkwrap.querySelectorAll("input").forEach(function(c){ c.checked = false; });
+      verdict.classList.add("hide"); verdict.innerHTML = "";
+      hint.textContent = "Write at least four sentences to unlock the self-check.";
+    }
+    area.addEventListener("input", function(){
+      var sentences = (area.value.match(/[.!?](\s|$)/g) || []).length;
+      var ready = sentences >= 4 && area.value.trim().length >= 150;
+      checkwrap.classList.toggle("hide", !ready);
+      hint.textContent = ready ? "Now check your version against the list below. Then read it aloud once." : "Write at least four sentences to unlock the self-check.";
+    });
+    reveal.addEventListener("click", function(){
+      var t = TALKS[order[pos % order.length]];
+      verdict.innerHTML = "";
+      [["strong", "A version with a clear route", t.model], ["weak", "A version with signposts that mislead", t.weak], ["why", "The difference", t.why]].forEach(function(v){
+        var d = el("div", v[0]); d.appendChild(el("b", "", v[1])); d.appendChild(document.createTextNode(v[2])); verdict.appendChild(d);
+      });
+      verdict.classList.remove("hide");
+    });
+    root.querySelector("[data-new]").addEventListener("click", function(){ pos++; show(); });
+    show();
+  })();
+
+})();
+
+</script>
+</body>
+</html>
